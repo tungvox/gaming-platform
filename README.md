@@ -1,7 +1,5 @@
 # Gaming platform
 
-Demo: [https://gaming-platform-7pma-4tf56c38b-tungvoxs-projects.vercel.app](https://gaming-platform-7pma-4tf56c38b-tungvoxs-projects.vercel.app)
-
 ## Installation
 
 Instructions on how to install and set up your project.
