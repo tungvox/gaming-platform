@@ -1,6 +1,6 @@
 # Gaming platform
 
-Demo: [https://gaming-platform-7pma-l55qeq1a3-tungvoxs-projects.vercel.app/login](https://gaming-platform-7pma-l55qeq1a3-tungvoxs-projects.vercel.app/login)
+Demo: [https://gaming-platform-7pma.vercel.app/login](https://gaming-platform-7pma.vercel.app/login)
 
 ## Installation
 
