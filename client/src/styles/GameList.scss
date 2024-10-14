@@ -263,7 +263,7 @@ $lighter-gray: #f0f0f0;
     .reset-button {
       background: none;
       border: none;
-      color: $light-gray;
+      color:#666;
       cursor: pointer;
       font-weight: bold;
       padding: 5px 10px; 
@@ -311,7 +311,6 @@ $lighter-gray: #f0f0f0;
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    aspect-ratio: 1 / 1;
 
     &:hover::after {
       content: '';
