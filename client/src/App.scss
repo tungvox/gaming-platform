@@ -1,0 +1,118 @@
+@import './styles/variables';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+$primary-color: #007bff;
+$rex-text-color: #ec4768;
+$white: #fff;
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: $white;
+  color: $primary-color;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .header-left {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      height: 40px;
+      margin-right: 1rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+
+    .profile-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    button {
+      background-color: transparent;
+      color: $rex-text-color;
+      border: none;
+      padding: 0.5rem 1rem;
+      padding-left: 0;
+      cursor: pointer;
+      font-weight: bold;
+      transition: color 0.3s;
+
+      &:hover {
+        color: darken($primary-color, 15%);
+      }
+    }
+  }
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+}
