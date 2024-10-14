@@ -51,7 +51,6 @@ const GameList: React.FC = () => {
   const [totalFilteredGames, setTotalFilteredGames] = useState<number>(0);
   const [allFilteredGames, setAllFilteredGames] = useState<Game[]>([]);
 
-  // Debounce the column change for performance
   const debouncedSetColumns = useMemo(
     () => debounce((value: number) => setColumns(value), 50),
     []
@@ -72,7 +71,6 @@ const GameList: React.FC = () => {
         setGames(response.data.games);
         setGameGroups(response.data.groups);
         
-        // Create options for providers and groups
         const providerOptions = response.data.providers.map((provider: Provider): Option => ({ 
           value: provider.id.toString(), 
           label: provider.name 
@@ -98,7 +96,6 @@ const GameList: React.FC = () => {
       return nameMatch && providerMatch && groupMatch && belongsToAnyGroup;
     });
 
-    // Sort the filtered games
     filtered.sort((a, b) => {
       if (sorting === 'A-Z') return a.name.localeCompare(b.name);
       if (sorting === 'Z-A') return b.name.localeCompare(a.name);
@@ -107,7 +104,7 @@ const GameList: React.FC = () => {
 
     setAllFilteredGames(filtered);
     setTotalFilteredGames(filtered.length);
-    setCurrentPage(0); // Reset to first page when filters change
+    setCurrentPage(0); 
   }, [games, searchTerm, selectedProviders, selectedGroups, gameGroups, sorting]);
 
   useEffect(() => {
@@ -147,7 +144,6 @@ const GameList: React.FC = () => {
     setCurrentPage(selected);
   };
 
-  // Memoize the filtered games grid
   const memoizedGameGrid = useMemo(() => (
     <div className="game-grid-wrapper">
       <div className={`game-grid columns-${columns}`}>

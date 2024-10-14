@@ -7,7 +7,7 @@ $button-color: #FDBC11;
 $white: #fff;
 $border-color: #ddd;
 $primary-color: #007bff;
-$lighter-gray: #f0f0f0; // Adjust this color as needed
+$lighter-gray: #f0f0f0; 
 
 .game-list-container {
   display: flex;
@@ -33,7 +33,7 @@ $lighter-gray: #f0f0f0; // Adjust this color as needed
   @media (min-width: 428px) {
     margin: 0;
     max-width: calc(100% - 315px);
-    order: 1; // Move game grid to the left
+    order: 1; 
   }
 }
 
@@ -102,7 +102,7 @@ $lighter-gray: #f0f0f0; // Adjust this color as needed
 }
 
 .filters-overlay {
-  display: none; // Hide filters by default on mobile
+  display: none; 
   position: static;
   background-color: transparent;
   padding: 0;
@@ -120,7 +120,7 @@ $lighter-gray: #f0f0f0; // Adjust this color as needed
     width: 300px;
     flex-shrink: 0;
     margin-bottom: 0;
-    order: 2; // Move filters to the right
+    order: 2; 
   }
 
   .filters {
@@ -136,10 +136,10 @@ $lighter-gray: #f0f0f0; // Adjust this color as needed
     }
 
     .search-container {
-      display: none; // Hide the second search box in filters
+      display: none; 
 
       @media (min-width: 428px) {
-        display: flex; // Show search in filters for desktop
+        display: flex; 
       }
     }
   }
@@ -181,9 +181,9 @@ $lighter-gray: #f0f0f0; // Adjust this color as needed
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 16px;
-    color: #808080; // Updated this line
+    color: #808080; 
     text-align: left;
-    font-weight: 600; // You can adjust the weight as needed
+    font-weight: 600; 
   }
 
   .filter-buttons {
@@ -195,12 +195,12 @@ $lighter-gray: #f0f0f0; // Adjust this color as needed
     button {
       padding: 5px 5px;
       font-size: 13px;
-      background-color: transparent; // No background by default
-      border: none; // No border
+      background-color: transparent; 
+      border: none; 
       border-radius: 4px;
       cursor: pointer;
       transition: all 0.3s ease;
-      color: black; // Default text color
+      color: black; 
 
       @media (min-width: 428px) {
         padding: 6px 6px;
@@ -208,11 +208,11 @@ $lighter-gray: #f0f0f0; // Adjust this color as needed
       }
 
       &:hover {
-        background-color: $lighter-gray; // Use $lighter-gray variable for hover state
+        background-color: $lighter-gray; 
       }
 
       &.active {
-        background-color: $light-orange; // Use the light orange color for active buttons
+        background-color: $light-orange; 
         color: #000;
       }
     }
@@ -266,19 +266,19 @@ $lighter-gray: #f0f0f0; // Adjust this color as needed
       color: $light-gray;
       cursor: pointer;
       font-weight: bold;
-      padding: 5px 10px; // Added padding for better clickable area
-      border-radius: 4px; // Rounded corners
-      transition: all 0.3s ease; // Smooth transition for hover effects
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Added box shadow
+      padding: 5px 10px; 
+      border-radius: 4px; 
+      transition: all 0.3s ease; 
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.05); // Slight background on hover
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); // Increased shadow on hover
+        background-color: rgba(0, 0, 0, 0.05); 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
       }
 
       &:active {
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); // Decreased shadow when clicked
-        transform: translateY(1px); // Slight downward movement when clicked
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); 
+        transform: translateY(1px); 
       }
     }
   }
@@ -327,7 +327,7 @@ $lighter-gray: #f0f0f0; // Adjust this color as needed
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover; // Ensure the image covers the entire card
+      object-fit: fill; 
       border-radius: 4px;
       display: block;
     }

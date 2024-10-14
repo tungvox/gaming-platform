@@ -12,7 +12,6 @@ const SECRET_KEY = 'your_secret_key';
 app.use(cors());
 app.use(express.json());
 
-// Load data from data.json
 let data;
 try {
   const rawData = readFileSync(path.join(__dirname, '../data.json'), 'utf-8');
@@ -25,13 +24,11 @@ try {
   data = { games: [], providers: [], groups: [] };
 }
 
-// In-memory user storage
 const users = [
   { id: 1, username: 'player1', password: bcrypt.hashSync('player1', 10) },
   { id: 2, username: 'player2', password: bcrypt.hashSync('player2', 10) },
 ];
 
-// Authentication middleware
 const authenticateToken = (req: any, res: any, next: any) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -45,7 +42,6 @@ const authenticateToken = (req: any, res: any, next: any) => {
   });
 };
 
-// Login route
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
   const user = users.find(u => u.username === username);
@@ -58,7 +54,6 @@ app.post('/login', (req, res) => {
   }
 });
 
-// Protected route to get game data
 app.get('/games', authenticateToken, (req: express.Request, res: express.Response) => {
   console.log('Accessing /games route');
   if (!data || !data.games) {

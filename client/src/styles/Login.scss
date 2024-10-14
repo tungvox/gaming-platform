@@ -5,7 +5,7 @@ $error-color: #ff0000;
 $border-color: #ddd;
 $button-color: #FDBC11;
 $white: #fff;
-$button-text-color: #000; // Added this variable for the button text color
+$button-text-color: #000; 
 
 .login-container {
   display: flex;
@@ -22,14 +22,13 @@ $button-text-color: #000; // Added this variable for the button text color
     background-color: white;
     padding: 2rem;
     border-radius: 8px;
-    //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
 
     h2 {
       margin-top: 0;
       margin-bottom: 1rem;
       text-align: center;
-      font-weight: 700; // You can adjust the weight as needed
+      font-weight: 700; 
     }
 
     .input-group {
@@ -93,10 +92,10 @@ $button-text-color: #000; // Added this variable for the button text color
       cursor: pointer;
       transition: background-color 0.3s;
       font-weight: bold;
-      width: 100%; // Make the button full width
-      padding: 0.75rem 0.5rem; // Match input padding
-      border-radius: 4px; // Match input border-radius
-      font-size: 1rem; // Match input font-size
+      width: 100%; 
+      padding: 0.75rem 0.5rem; 
+      border-radius: 4px; 
+      font-size: 1rem; 
 
       &:hover {
         background-color: darken($button-color, 10%);
