@@ -54,7 +54,7 @@ const GameFilters: React.FC<GameFiltersProps> = memo(({
             </button>
           ))}
         </div>
-        <h3>Groups</h3>
+        <h3>Game groups</h3>
         <div className="filter-buttons">
           {groupOptions.map(group => (
             <button
