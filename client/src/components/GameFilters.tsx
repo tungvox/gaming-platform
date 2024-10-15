@@ -78,27 +78,31 @@ const GameFilters: React.FC<GameFiltersProps> = memo(({
             </button>
           ))}
         </div>
-        <h3>Columns</h3>
-        <div className="columns-slider">
-          <button 
-            onClick={() => handleColumnChange(2)} 
-            className={columns === 2 ? 'active' : ''}
-          >
-            2
-          </button>
-          <button 
-            onClick={() => handleColumnChange(3)} 
-            className={columns === 3 ? 'active' : ''}
-          >
-            3
-          </button>
-          <button 
-            onClick={() => handleColumnChange(4)} 
-            className={columns === 4 ? 'active' : ''}
-          >
-            4
-          </button>
+        
+        <div className="desktop-only">
+          <h3>Columns</h3>
+          <div className="columns-slider">
+            <button 
+              onClick={() => handleColumnChange(2)} 
+              className={columns === 2 ? 'active' : ''}
+            >
+              2
+            </button>
+            <button 
+              onClick={() => handleColumnChange(3)} 
+              className={columns === 3 ? 'active' : ''}
+            >
+              3
+            </button>
+            <button 
+              onClick={() => handleColumnChange(4)} 
+              className={columns === 4 ? 'active' : ''}
+            >
+              4
+            </button>
+          </div>
         </div>
+        
         <div className="games-amount-reset">
           <span>Games amount: {totalFilteredGames}</span>
           <button onClick={resetFilters} className="reset-button">Reset</button>

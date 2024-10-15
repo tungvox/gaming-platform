@@ -8,7 +8,7 @@ $white: #fff;
 $border-color: #ddd;
 $primary-color: #007bff;
 $lighter-gray: #f0f0f0; 
-$button-blue: #007bff; 
+$button-blue: #0056b3; 
 
 .game-list-container {
   display: flex;
@@ -397,5 +397,13 @@ $button-blue: #007bff;
       color: $light-gray;
       cursor: not-allowed;
     }
+  }
+}
+
+.desktop-only {
+  display: none;
+
+  @media (min-width: 428px) {
+    display: block;
   }
 }

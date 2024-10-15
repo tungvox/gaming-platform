@@ -132,7 +132,10 @@ const GameList: React.FC = () => {
     setSelectedProviders([]);
     setSelectedGroups([]);
     setSorting('A-Z');
-    setColumns(4);
+    
+    if (window.innerWidth >= 428) {
+      setColumns(4);
+    }
   };
 
   const handleGroupToggle = (groupId: number) => {
