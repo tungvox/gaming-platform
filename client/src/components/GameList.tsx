@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import '../styles/GameList.scss';
 import ReactPaginate from 'react-paginate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimes, faBars, faFilter } from '@fortawesome/free-solid-svg-icons';
 import debounce from 'lodash/debounce';
 import GameFilters from './GameFilters';
 
@@ -188,6 +188,8 @@ const GameList: React.FC = () => {
           className="toggle-filters-button"
           onClick={() => setShowFilters(!showFilters)}
         >
+          <FontAwesomeIcon icon={faBars} className="icon" />
+          <FontAwesomeIcon icon={faFilter} className="filter-icon" />
           {showFilters ? 'Hide filters' : 'Show filters'}
         </button>
         <GameFilters

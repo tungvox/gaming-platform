@@ -8,6 +8,7 @@ $white: #fff;
 $border-color: #ddd;
 $primary-color: #007bff;
 $lighter-gray: #f0f0f0; 
+$button-blue: #007bff; 
 
 .game-list-container {
   display: flex;
@@ -96,14 +97,35 @@ $lighter-gray: #f0f0f0;
 .toggle-filters-button {
   width: 100%;
   background: none;
-  border: 1px solid $primary-color;
-  color: $primary-color;
+  border: none;
+  color: $button-blue;
   cursor: pointer;
-  text-align: center;
-  margin-top: 10px;
+  text-align: left;
+  margin-top: 15px;
   font-weight: bold;
-  padding: 10px;
-  border-radius: 4px;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  font-size: 16px;
+
+  .icon, .filter-icon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: $button-blue;
+  }
+
+  &:hover {
+    color: darken($button-blue, 10%);
+
+    .icon, .filter-icon {
+      color: darken($button-blue, 10%);
+    }
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
 
   @media (min-width: 428px) {
     display: none;
