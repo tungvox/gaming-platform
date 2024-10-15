@@ -6,7 +6,7 @@
 }
 
 $primary-color: #007bff;
-$rex-text-color: #ec4768;
+$red-text-color: #ec4768;
 $white: #fff;
 
 body {
@@ -100,7 +100,7 @@ header {
 
     button {
       background-color: transparent;
-      color: $rex-text-color;
+      color: $red-text-color;
       border: none;
       padding: 0.5rem 1rem;
       padding-left: 0;
@@ -109,7 +109,7 @@ header {
       transition: color 0.3s;
 
       &:hover {
-        color: darken($primary-color, 15%);
+        color: darken($red-text-color, 15%);
       }
     }
   }

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import '../styles/Login.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -13,6 +13,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const { login, token } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -22,12 +23,15 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const response = await axios.post('http://localhost:3001/login', { username, password });
       login(response.data.token);
       navigate('/games');
     } catch (error) {
       setError('Invalid credentials. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -65,7 +69,13 @@ const Login: React.FC = () => {
             <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
           </button>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? (
+            <FontAwesomeIcon icon={faSpinner} spin />
+          ) : (
+            'Login'
+          )}
+        </button>
       </form>
     </div>
   );

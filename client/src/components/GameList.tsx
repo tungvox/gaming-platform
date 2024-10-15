@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import '../styles/GameList.scss';
 import ReactPaginate from 'react-paginate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import debounce from 'lodash/debounce';
 import GameFilters from './GameFilters';
 
@@ -86,8 +86,8 @@ const GameList: React.FC = () => {
     fetchGames();
   }, [token]);
 
-  useEffect(() => {
-    let filtered = games.filter((game) => {
+  const filterGames = useCallback((games: Game[]) => {
+    return games.filter((game) => {
       const nameMatch = game.name.toLowerCase().includes(searchTerm.toLowerCase());
       const providerMatch = selectedProviders.length === 0 || selectedProviders.includes(game.provider.toString());
       const groupMatch = selectedGroups.length === 0 || gameGroups.some(group => 
@@ -96,17 +96,23 @@ const GameList: React.FC = () => {
       const belongsToAnyGroup = gameGroups.some(group => group.games.includes(game.id));
       return nameMatch && providerMatch && groupMatch && belongsToAnyGroup;
     });
+  }, [searchTerm, selectedProviders, selectedGroups, gameGroups]);
 
-    filtered.sort((a, b) => {
+  const sortGames = useCallback((games: Game[]) => {
+    return [...games].sort((a, b) => {
       if (sorting === 'A-Z') return a.name.localeCompare(b.name);
       if (sorting === 'Z-A') return b.name.localeCompare(a.name);
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
+  }, [sorting]);
 
-    setAllFilteredGames(filtered);
-    setTotalFilteredGames(filtered.length);
-    setCurrentPage(0); 
-  }, [games, searchTerm, selectedProviders, selectedGroups, gameGroups, sorting]);
+  useEffect(() => {
+    const filtered = filterGames(games);
+    const sorted = sortGames(filtered);
+    setAllFilteredGames(sorted);
+    setTotalFilteredGames(sorted.length);
+    setCurrentPage(0);
+  }, [games, filterGames, sortGames]);
 
   useEffect(() => {
     const offset = currentPage * gamesPerPage;
@@ -149,7 +155,7 @@ const GameList: React.FC = () => {
     <div className="game-grid-wrapper">
       <div className={`game-grid columns-${columns}`}>
         {filteredGames.map(game => (
-          <div key={game.id} className="game-card">
+          <div key={game.id} className="game-card" title={game.name}>
             <img src={game.cover} alt={game.name} />
           </div>
         ))}
@@ -157,9 +163,13 @@ const GameList: React.FC = () => {
     </div>
   ), [filteredGames, columns]);
 
+  const handleClearSearch = () => {
+    setSearchTerm('');
+  };
+
   return (
     <div className="game-list-container">
-      <div className="mobile-header">
+      <div className="search-and-filters">
         <div className="search-container">
           <input
             type="text"
@@ -167,6 +177,11 @@ const GameList: React.FC = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search"
           />
+          {searchTerm && (
+            <button className="clear-search" onClick={handleClearSearch}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+          )}
           <FontAwesomeIcon icon={faSearch} className="search-icon" />
         </div>
         <button 
@@ -175,24 +190,25 @@ const GameList: React.FC = () => {
         >
           {showFilters ? 'Hide filters' : 'Show filters'}
         </button>
+        <GameFilters
+          showFilters={showFilters}
+          setShowFilters={setShowFilters}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          providerOptions={providerOptions}
+          selectedProviders={selectedProviders}
+          handleProviderToggle={handleProviderToggle}
+          groupOptions={groupOptions}
+          selectedGroups={selectedGroups}
+          handleGroupToggle={handleGroupToggle}
+          sorting={sorting}
+          setSorting={setSorting}
+          columns={columns}
+          handleColumnChange={handleColumnChange}
+          totalFilteredGames={totalFilteredGames}
+          resetFilters={resetFilters}
+        />
       </div>
-      <GameFilters
-        showFilters={showFilters}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        providerOptions={providerOptions}
-        selectedProviders={selectedProviders}
-        handleProviderToggle={handleProviderToggle}
-        groupOptions={groupOptions}
-        selectedGroups={selectedGroups}
-        handleGroupToggle={handleGroupToggle}
-        sorting={sorting}
-        setSorting={setSorting}
-        columns={columns}
-        handleColumnChange={handleColumnChange}
-        totalFilteredGames={totalFilteredGames}
-        resetFilters={resetFilters}
-      />
       <div className="game-grid-section">
         {allFilteredGames.length > 0 ? (
           <>

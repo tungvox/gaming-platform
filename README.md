@@ -1,5 +1,7 @@
 # Gaming platform
 
+![Gaming Platform Screenshot](finnplay.PNG)
+
 ## Installation
 
 Instructions on how to install and set up your project.
@@ -24,3 +26,10 @@ To run the application, follow these steps:
    ```
 
 The server will start running, and the client will be available at the URL provided in the terminal (typically http://localhost:5173 if you're using Vite as your development server).
+
+## Logging In
+
+You can log in to the application using the following test accounts:
+
+- Username: player1, Password: player1
+- Username: player2, Password: player2

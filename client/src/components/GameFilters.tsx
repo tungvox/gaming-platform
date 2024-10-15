@@ -1,6 +1,4 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import React, { memo } from 'react';
 
 interface Option {
   value: string | number;
@@ -23,12 +21,11 @@ interface GameFiltersProps {
   handleColumnChange: (value: number) => void;
   totalFilteredGames: number;
   resetFilters: () => void;
+  setShowFilters: (show: boolean) => void;
 }
 
-const GameFilters: React.FC<GameFiltersProps> = ({
+const GameFilters: React.FC<GameFiltersProps> = memo(({
   showFilters,
-  searchTerm,
-  setSearchTerm,
   providerOptions,
   selectedProviders,
   handleProviderToggle,
@@ -43,19 +40,10 @@ const GameFilters: React.FC<GameFiltersProps> = ({
   resetFilters,
 }) => {
   return (
-    <div className={`filters-overlay ${showFilters ? 'show' : ''}`}>
+    <div className={`filters-container ${showFilters ? 'show' : ''}`}>
       <div className="filters">
-        <div className="search-container">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search"
-          />
-          <FontAwesomeIcon icon={faSearch} className="search-icon" />
-        </div>
         <h3>Providers</h3>
-        <div className="filter-buttons provider-buttons">
+        <div className="filter-buttons">
           {providerOptions.map(provider => (
             <button
               key={provider.value}
@@ -66,8 +54,8 @@ const GameFilters: React.FC<GameFiltersProps> = ({
             </button>
           ))}
         </div>
-        <h3>Game groups</h3>
-        <div className="filter-buttons group-buttons">
+        <h3>Groups</h3>
+        <div className="filter-buttons">
           {groupOptions.map(group => (
             <button
               key={group.value}
@@ -118,6 +106,6 @@ const GameFilters: React.FC<GameFiltersProps> = ({
       </div>
     </div>
   );
-};
+});
 
 export default GameFilters;
