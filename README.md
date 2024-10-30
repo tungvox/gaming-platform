@@ -1,6 +1,6 @@
 # Gaming platform
 
-![Gaming Platform Screenshot](finnplay.PNG)
+![Gaming Platform Screenshot](ggwp.PNG)
 
 ## Installation
 

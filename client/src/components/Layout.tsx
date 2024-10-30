@@ -12,7 +12,7 @@ const Header: React.FC = () => {
     <header>
       <div className="header-left">
         <Link to="/">
-          <img src="/logo.png" alt="Finnplay Logo" className="logo" />
+          <img src="/GG.png" alt="Finnplay Logo" className="logo" />
         </Link>
       </div>
       <div className="header-right">

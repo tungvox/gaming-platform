@@ -37,7 +37,7 @@ const Login: React.FC = () => {
 
   return (
     <div className="login-container">
-      <img src="/logo.png" alt="Finnplay Logo" className="login-logo" />
+      <img src="/GG.png" alt="Finnplay Logo" className="login-logo" />
       <form onSubmit={handleSubmit}>
         {error && <p className="error">{error}</p>}
         <div className="input-group">
